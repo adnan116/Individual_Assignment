@@ -50,4 +50,10 @@ class HomeController extends Controller
     }
 
 
+    public function userDetails(){
+        $users = User::all();
+        return view('admin.allUsers', ['users'=>$users]);
+    }
+
+
 }
