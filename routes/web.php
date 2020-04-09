@@ -16,8 +16,10 @@ Route::get('/', 'GenHomeController@index')->name('genHome.index');
 
 Route::get('/login', 'LoginController@index')->name('login.index');
 Route::post('/login', 'LoginController@verification');
+Route::get('/logout', 'LogoutController@index');
 
 Route::get('/register', 'RegController@index')->name('register.index');
+Route::post('/register', 'RegController@register');
 
 Route::get('/AdminHome', 'HomeController@admin')->name('home.admin')->middleware('sess');;
 Route::get('/ScoutHome', 'HomeController@scout')->name('home.scout')->middleware('sess');;

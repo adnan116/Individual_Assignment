@@ -12,6 +12,15 @@
 					<td colspan="3"><h2><center>Self Registration</center></h2></td>
 				</tr>
 				<tr>
+					<td colspan="3">
+						<center>
+							@foreach($errors->all() as $error)
+								<h4 style="color: red;">{{$error}}</h4>
+							@endforeach
+						</center>
+					</td>
+				</tr>
+				<tr>
 					<td>Name:</td>
 					<td colspan="2"><input type="text" name="name"></td>
 				</tr>
@@ -21,12 +30,13 @@
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td colspan="2"><input type="email" name="email"></td>
+					<td colspan="2"><input type="text" name="email"></td>
 				</tr>
 				<tr>
 					<td>Role:</td>
 					<td colspan="2">
 						<select name="role">
+							<option value="">Select Role</option>
 							<option value="admin">Admin</option>
 							<option value="scout">Scout</option>
 							<option value="user">User</option>
