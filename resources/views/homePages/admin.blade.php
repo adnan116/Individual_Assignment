@@ -10,12 +10,12 @@
 		<table align="center">
 			<tr>
 				<td colspan="2">
-					<a href="/addUser"><input type="button" name="addUser" value="Add User" style="width: 200%;"></a>
+					<a href="/AdminHome/addUser"><input type="button" name="addUser" value="Add User" style="width: 200%;"></a>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="/userDetails"><input type="button" name="userDetails" value="User List" style="width: 200%;"></a>
+					<a href="/AdminHome/userDetails"><input type="button" name="userDetails" value="User List" style="width: 200%;"></a>
 				</td>
 			</tr>
 
