@@ -21,29 +21,29 @@
 
 			<tr>
 				<td colspan="2">
-					<a href="/addPlace"><input type="button" name="addPlace" value="Add Place" style="width: 200%;"></a>
+					<a href="/AdminHome/addPlace"><input type="button" name="addPlace" value="Add Place" style="width: 200%;"></a>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="/placeDetails"><input type="button" name="placeDetails" value="Place list" style="width: 200%;"></a>
-				</td>
-			</tr>
-
-			<tr>
-				<td colspan="2">
-					<a href="/addCountry"><input type="button" name="addCountry" value="Add Country" style="width: 200%;"></a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<a href="/countryDetails"><input type="button" name="countryDetails" value="Country list" style="width: 200%;"></a>
+					<a href="/AdminHome/placeDetails"><input type="button" name="placeDetails" value="Place list" style="width: 200%;"></a>
 				</td>
 			</tr>
 
 			<tr>
 				<td colspan="2">
-					<a href="/myProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a>
+					<a href="/AdminHome/addCountry"><input type="button" name="addCountry" value="Add Country" style="width: 200%;"></a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a href="/AdminHome/countryDetails"><input type="button" name="countryDetails" value="Country list" style="width: 200%;"></a>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					<a href="/AdminHome/myProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a>
 				</td>
 			</tr>
 			<tr>

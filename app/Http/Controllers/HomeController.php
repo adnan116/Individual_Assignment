@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\CountryRequest;
 use App\User;
+use App\Country;
 
 class HomeController extends Controller
 {
@@ -32,7 +34,7 @@ class HomeController extends Controller
     }
 
 
-     public function registerDone(UserRequest $req){
+    public function registerDone(UserRequest $req){
 
         $user               = new User();
         $user->name         = $req->name;
@@ -92,6 +94,28 @@ class HomeController extends Controller
             return redirect()->route('home.userDetails');
         }else{
             return redirect()->route('admin.deleteShow', $id);
+        }
+    }
+
+
+    public function addCountry(){
+        
+        $users = User::all()->where('role','scout');
+        return view('admin.addCountry', ['user'=>$users]);
+    }
+
+
+    public function addCountryDone(CountryRequest $req){
+
+        $country        = new Country();
+        $country->name  = $req->name;
+        $country->id    = $req->scoutName;
+       
+        
+        if($country->save()){
+            return redirect()->route('home.countryDetails');
+        }else{
+            return redirect()->route('home.addCountry');
         }
     }
 
