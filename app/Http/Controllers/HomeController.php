@@ -56,4 +56,29 @@ class HomeController extends Controller
     }
 
 
+    public function updateShow($id){
+        
+        $user = User::find($id);
+        return view('admin.updateShow', $user);
+    }
+
+
+    public function updateDone($id, UserRequest $req){
+
+        $user               = User::find($id);
+        $user->name         = $req->name;
+        $user->phone        = $req->phone;
+        $user->email        = $req->email;
+        $user->role         = $req->role;
+        $user->username     = $req->username;
+        $user->password     = $req->password;
+
+        if($user->save()){
+            return redirect()->route('home.userDetails');
+        }else{
+            return redirect()->route('home.updateShow', $id);
+        }
+    }
+
+
 }

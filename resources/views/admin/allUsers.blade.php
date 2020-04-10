@@ -30,8 +30,8 @@
 				<td>{{ $user['role'] }}</td>
 				<td>{{ $user['username'] }}</td>
 				<td>
-					<a href=""><input type="button" name="edit" value="Edit"></a>&emsp;&ensp;
-					<a href=""><input type="button" name="del" value="Delete"></a>
+					<a href="{{route('home.updateShow', $user['id'])}}"><input type="button" name="edit" value="Edit"></a>&emsp;&ensp;
+					<a href="{{route('home.deleteShow', $user['id'])}}"><input type="button" name="del" value="Delete"></a>
 				</td>
 			</tr>
 			@endforeach

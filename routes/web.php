@@ -22,9 +22,16 @@ Route::get('/register', 'RegController@index')->name('register.index');
 Route::post('/register', 'RegController@register');
 
 Route::get('/AdminHome', 'HomeController@admin')->name('home.admin')->middleware('sess');
-Route::get('/AdminHome/addUser', 'HomeController@register')->name('home.register');
-Route::post('/AdminHome/addUser', 'HomeController@registerDone');
-Route::get('/AdminHome/userDetails', 'HomeController@userDetails')->name('home.userDetails');
+Route::get('/AdminHome/addUser', 'HomeController@register')->name('home.register')->middleware('sess');
+Route::post('/AdminHome/addUser', 'HomeController@registerDone')->middleware('sess');
+Route::get('/AdminHome/userDetails', 'HomeController@userDetails')->name('home.userDetails')->middleware('sess');
+Route::get('/AdminHome/update/{id}', 'HomeController@updateShow')->name('home.updateShow');
+Route::post('/AdminHome/update/{id}', 'HomeController@updateDone');
+Route::get('/AdminHome/delete/{id}', 'HomeController@deleteShow')->name('home.deleteShow');
+Route::post('/AdminHome/delete/{id}', 'HomeController@deleteDone');
+
+
+
 
 Route::get('/ScoutHome', 'HomeController@scout')->name('home.scout')->middleware('sess');
 
