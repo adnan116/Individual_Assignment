@@ -81,4 +81,19 @@ class HomeController extends Controller
     }
 
 
+     public function deleteShow($id){
+        $user = User::find($id);
+        return view('admin.deleteShow', $user);
+    }
+
+
+    public function deleteDone($id, Request $req){
+        if(User::destroy($req->id)){
+            return redirect()->route('home.userDetails');
+        }else{
+            return redirect()->route('admin.deleteShow', $id);
+        }
+    }
+
+
 }
