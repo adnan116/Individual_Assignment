@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\CountryRequest;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Country;
 
@@ -83,7 +84,7 @@ class HomeController extends Controller
     }
 
 
-     public function deleteShow($id){
+    public function deleteShow($id){
         $user = User::find($id);
         return view('admin.deleteShow', $user);
     }
@@ -118,6 +119,52 @@ class HomeController extends Controller
             return redirect()->route('home.addCountry');
         }
     }
+
+
+    public function countryDetails(){
+        $country = DB::select("select countries.cid, countries.name, users.name 'scout' from countries, users where countries.id = users.id");
+        return view('admin.countryDetails', ['countries'=>$country]);
+    }
+
+
+    public function updateCountry($id){
+        
+        $country = Country::find($id);
+        $allUsers = User::all()->where('role','scout');
+        $oneUser = User::find($country['id']);
+        return view('admin.updateCountry', ['countries'=>$country, 'users'=>$allUsers, 'user'=>$oneUser]);
+    }
+
+
+    public function updateCountryDone($id, CountryRequest $req){
+
+        $country            = Country::find($id);
+        $country->name      = $req->name;
+        $country->id        = $req->scoutName;
+
+        if($country->save()){
+            return redirect()->route('home.countryDetails');
+        }else{
+            return redirect()->route('home.updateCountry', $id);
+        }
+    }
+
+
+    public function deleteCountry($id){
+        $country = Country::find($id);
+        $user = User::find($country['id']);
+        return view('admin.deleteCountry', ['countries'=>$country, 'users'=>$user]);
+    }
+
+
+    public function deleteCountryDone($id, Request $req){
+        if(Country::destroy($req->id)){
+            return redirect()->route('home.countryDetails');
+        }else{
+            return redirect()->route('home.deleteCountry', $id);
+        }
+    }
+
 
 
 }

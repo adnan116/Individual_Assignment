@@ -32,6 +32,11 @@ Route::post('/AdminHome/delete/{id}', 'HomeController@deleteDone');
 Route::get('/AdminHome/addCountry', 'HomeController@addCountry')->name('home.addCountry')->middleware('sess');
 Route::post('/AdminHome/addCountry', 'HomeController@addCountryDone')->middleware('sess');
 Route::get('/AdminHome/countryDetails', 'HomeController@countryDetails')->name('home.countryDetails')->middleware('sess');
+Route::get('/AdminHome/updateCountry/{id}', 'HomeController@updateCountry')->name('home.updateCountry');
+Route::post('/AdminHome/updateCountry/{id}', 'HomeController@updateCountryDone');
+Route::get('/AdminHome/deleteCountry/{id}', 'HomeController@deleteCountry')->name('home.deleteCountry');
+Route::post('/AdminHome/deleteCountry/{id}', 'HomeController@deleteCountryDone');
+
 
 
 Route::get('/ScoutHome', 'HomeController@scout')->name('home.scout')->middleware('sess');
