@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\CountryRequest;
+use App\Http\Requests\PlaceRequest;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Country;
+use App\Place;
 
 class HomeController extends Controller
 {
@@ -162,6 +164,28 @@ class HomeController extends Controller
             return redirect()->route('home.countryDetails');
         }else{
             return redirect()->route('home.deleteCountry', $id);
+        }
+    }
+
+
+    public function addPlace(){
+        
+        $country = Country::all();
+        return view('admin.addPlace', ['countries'=>$country]);
+    }
+
+
+    public function addPlaceDone(PlaceRequest $req){
+
+        $place        = new Place();
+        $place->pname  = $req->name;
+        $place->pdes    = $req->description;
+        $place->cid    = $req->country;
+        
+        if($place->save()){
+            return redirect()->route('home.placeDetails');
+        }else{
+            return redirect()->route('home.addPlace');
         }
     }
 
