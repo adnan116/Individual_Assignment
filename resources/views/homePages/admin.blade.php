@@ -43,7 +43,7 @@
 
 			<tr>
 				<td colspan="2">
-					<a href="/AdminHome/myProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a>
+					<a href="/AdminHome/updateProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a>
 				</td>
 			</tr>
 			<tr>
