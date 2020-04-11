@@ -43,6 +43,12 @@
 
 			<tr>
 				<td colspan="2">
+					<a href="/AdminHome/reqPost"><input type="button" name="ReqPost" value="Requsted Posts" style="width: 200%;"></a>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
 					<a href="/AdminHome/updateProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a>
 				</td>
 			</tr>

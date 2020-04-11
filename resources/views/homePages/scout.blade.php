@@ -9,6 +9,9 @@
 
 		<table align="center">
 			<tr>
+				<td><a href="/ScoutHome/addPost"><input type="button" name="addPost" value="Add Post" style="width: 200%;"></a></td><br>
+			</tr>
+			<tr>
 				<td><a href="/ScoutHome/updateProfile"><input type="button" name="myProfile" value="Profile View" style="width: 200%;"></a></td><br>
 			</tr>
 			<tr>

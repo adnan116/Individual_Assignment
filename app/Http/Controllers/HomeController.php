@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Country;
 use App\Place;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -260,6 +261,36 @@ class HomeController extends Controller
             return redirect()->route('home.updateProfile');
         }else{
             return redirect()->route('home.updateProfile', $req->id);
+        }
+    }
+
+
+    public function reqPost(){
+
+        $post = DB::table('posts')->where('status', 0)->get();
+        return view('admin.allPosts', ['posts'=>$post]);
+    }
+
+
+    public function approve($id){
+
+        $post            = Post::find($id);
+        $post->status     = 1;
+
+        if($post->save()){
+            return redirect()->route('home.admin');
+        }else{
+            return redirect()->route('home.allPosts');
+        }
+    }
+
+
+    public function decline($id){
+
+        if(Post::destroy($id)){
+            return redirect()->route('home.admin');
+        }else{
+            return redirect()->route('home.allPosts');
         }
     }
 

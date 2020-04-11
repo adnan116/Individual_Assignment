@@ -34,4 +34,12 @@ class UserHomeController extends Controller
             return redirect()->route('user.updateProfile', $req->id);
         }
     }
+
+
+    public function placeDetails(){
+        $place = DB::select("select places.pid, places.pname, places.pdes, countries.name, users.name 'scout' from places, countries, users where places.cid = countries.cid and countries.id = users.id");
+        return view('scout.placeDetails', ['places'=>$place]);
+    }
+
+
 }

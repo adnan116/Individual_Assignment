@@ -45,16 +45,22 @@ Route::get('/AdminHome/deletePlace/{id}', 'HomeController@deletePlace')->name('h
 Route::post('/AdminHome/deletePlace/{id}', 'HomeController@deletePlaceDone');
 Route::get('/AdminHome/updateProfile', 'HomeController@updateProfile')->name('home.updateProfile')->middleware('sess');
 Route::post('/AdminHome/updateProfile', 'HomeController@updateProfileDone');
+Route::get('/AdminHome/reqPost', 'HomeController@reqPost')->name('home.reqPost')->middleware('sess');
+Route::get('/AdminHome/approve/{id}', 'HomeController@approve')->name('home.approve')->middleware('sess');
+Route::get('/AdminHome/decline/{id}', 'HomeController@decline')->name('home.decline')->middleware('sess');
+
 
 
 Route::get('/ScoutHome', 'HomeController@scout')->name('home.scout')->middleware('sess');
 Route::get('/ScoutHome/updateProfile', 'ScoutHomeController@updateProfile')->name('scout.updateProfile')->middleware('sess');
 Route::post('/ScoutHome/updateProfile', 'ScoutHomeController@updateProfileDone');
-
+Route::get('/ScoutHome/addPost', 'ScoutHomeController@addPost')->name('scout.addPost')->middleware('sess');
+Route::post('/ScoutHome/addPost', 'ScoutHomeController@addPostDone')->middleware('sess');
 
 
 
 
 Route::get('/UserHome', 'HomeController@user')->name('home.user')->middleware('sess');
-Route::get('/UserHome/updateProfile', 'ScoutHomeController@updateProfile')->name('user.updateProfile')->middleware('sess');
-Route::post('/UserHome/updateProfile', 'ScoutHomeController@updateProfileDone');
+Route::get('/UserHome/updateProfile', 'UserHomeController@updateProfile')->name('user.updateProfile')->middleware('sess');
+Route::post('/UserHome/updateProfile', 'UserHomeController@updateProfileDone');
+Route::get('/UserHome/placeDetails', 'UserHomeController@placeDetails')->name('user.placeDetails')->middleware('sess');

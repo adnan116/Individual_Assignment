@@ -9,6 +9,9 @@
 
 		<table align="center">
 			<tr>
+				<td><a href="/UserHome/placeDetails"><input type="button" name="allPlaces" value="All Places" style="width: 200%;"></a></td><br>
+			</tr>
+			<tr>
 				<td><a href="/UserHome/updateProfile"><input type="button" name="myprofile" value="Profile View" style="width: 200%;"></a></td><br>
 			</tr>
 			<tr>
