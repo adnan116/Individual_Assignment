@@ -190,5 +190,50 @@ class HomeController extends Controller
     }
 
 
+    public function placeDetails(){
+        $place = DB::select("select places.pid, places.pname, places.pdes, countries.name, users.name 'scout' from places, countries, users where places.cid = countries.cid and countries.id = users.id");
+        return view('admin.placeDetails', ['places'=>$place]);
+    }
+
+
+    public function updatePlace($id){
+        
+        $onePlace = Place::find($id);
+        $allCountry = Country::all();
+        $oneCountry = Country::find($onePlace['cid']);
+        return view('admin.updatePlace', ['place'=>$onePlace, 'countries'=>$allCountry, 'country'=>$oneCountry]);
+    }
+
+
+    public function updatePlaceDone($id, PlaceRequest $req){
+
+        $place            = Place::find($id);
+        $place->pname     = $req->name;
+        $place->pdes      = $req->description;
+        $place->cid        = $req->country;
+
+        if($place->save()){
+            return redirect()->route('home.placeDetails');
+        }else{
+            return redirect()->route('home.updatePlace', $id);
+        }
+    }
+
+
+    public function deletePlace($id){
+        $onePlace = Place::find($id);
+        $oneCountry = Country::find($onePlace['cid']);
+        $user = User::find($oneCountry['id']);
+        return view('admin.deletePlace', ['place'=>$onePlace, 'country'=>$oneCountry, 'users'=>$user]);
+    }
+
+
+    public function deletePlaceDone($id, Request $req){
+        if(Place::destroy($req->id)){
+            return redirect()->route('home.placeDetails');
+        }else{
+            return redirect()->route('home.deletePlace', $id);
+        }
+    }
 
 }
